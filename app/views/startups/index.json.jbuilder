@@ -1,0 +1,1 @@
+json.array! @startups, partial:'startup', as: :startup
