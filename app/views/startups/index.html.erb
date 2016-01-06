@@ -2,7 +2,9 @@
   <div ng-controller="startupsCtrl" ng-init="setup()">
   <div>
     Add Startup:
-
+    <ul>
+      <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
+    </ul>
     <div>
     Name: <input ng-model="newName">
     </div>

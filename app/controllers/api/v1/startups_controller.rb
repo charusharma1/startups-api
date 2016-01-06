@@ -10,8 +10,12 @@ class Api::V1::StartupsController < ApplicationController
   end
 
   def create
-    @startup = Startup.create(name: params[:name], location: params[:location], job_openings: params[:job_openings])
-    render :show
+    @startup = Startup.new(name: params[:name], location: params[:location], job_openings: params[:job_openings])
+    if @startup.save
+      render json: @startup
+    else 
+    render json: {errors: @startup.errors.full_messages}, status: 422
+    end
   end
 
   def update

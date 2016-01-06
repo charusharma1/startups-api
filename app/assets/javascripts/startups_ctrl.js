@@ -22,8 +22,10 @@
       $http.post('api/v1/startups.json',newStartup).then(function(response){
         var startupCallback = response.data;  
         $scope.startups.push(startupCallback);
+        console.log("happy path.")
+      }, function(error) {
+        $scope.errorMessages = error.data.errors
       });
-      $scope.startups.push(newStartup);
     }
 
     // $scope.deleteStartup = function(index) {
