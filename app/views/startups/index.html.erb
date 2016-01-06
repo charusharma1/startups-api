@@ -1,0 +1,32 @@
+<div ng-app="app">
+  <div ng-controller="startupsCtrl" ng-init="setup()">
+  <div>
+    Add Startup:
+
+    <div>
+    Name: <input ng-model="newName">
+    </div>
+    <div>
+    Location: <input ng-model="newLocation">
+    </div>
+    <div>
+    Job Openings: <input ng-model="newJobOpenings">
+    </div>
+    <button ng-click="addStartup(newName, newLocation, newJobOpenings)">Add Startup</button>
+
+
+
+  </div>
+    <div>
+      Total Number of Startups: {{startups.length}}
+    </div>
+     <div ng-repeat="startup in startups">
+       <p>{{startup.name}}</p>
+       <p>{{startup.location}}</p>
+       <p>{{startup.job_openings}}</p>
+         <a href="#" ng-click="deleteStartup($index)">Delete</a>
+    </div>
+     </div>
+
+  </div>
+</div>
