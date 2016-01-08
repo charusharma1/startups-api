@@ -23,7 +23,12 @@
       Total Number of Startups: {{startups.length}}
     </div>
 
-    <input ng-model="nameFilter">
+    <datalist id="names">
+      <option ng-repeat="startup in startups">{{startup.name}}</option>
+    </datalist>
+    
+
+    <input ng-model="nameFilter" list="names">
     <div >
 
       <table class="table-bordered">
