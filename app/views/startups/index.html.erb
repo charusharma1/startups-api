@@ -1,34 +1,47 @@
 <div ng-app="app">
   <div ng-controller="startupsCtrl" ng-init="setup()">
-  <div>
-    Add Startup:
-    <ul>
-      <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
-    </ul>
     <div>
-    Name: <input ng-model="newName">
-    </div>
-    <div>
-    Location: <input ng-model="newLocation">
-    </div>
-    <div>
-    Job Openings: <input ng-model="newJobOpenings">
-    </div>
-    <button ng-click="addStartup(newName, newLocation, newJobOpenings)">Add Startup</button>
+      Add Startup:
+      <ul>
+        <li class="error-messages" ng-repeat="errorMessage in errorMessages">{{errorMessage}}</li>
+      </ul>
+      <div>
+        Name: <input ng-model="newName">
+      </div>
+      <div>
+        Location: <input ng-model="newLocation">
+      </div>
+      <div>
+        Job Openings: <input ng-model="newJobOpenings">
+      </div>
+      <button ng-click="addStartup(newName, newLocation, newJobOpenings)">Add Startup</button>
 
 
 
-  </div>
+    </div>
     <div>
       Total Number of Startups: {{startups.length}}
     </div>
-     <div ng-repeat="startup in startups">
-       <p>{{startup.name}}</p>
-       <p>{{startup.location}}</p>
-       <p>{{startup.job_openings}}</p>
-         <a href="#" ng-click="deleteStartup($index)">Delete</a>
-    </div>
-     </div>
 
-  </div>
+    <input ng-model="nameFilter">
+    <div >
+
+      <table class="table-bordered">
+        <tr>
+          <th><button ng-click="toggleOrder('name')">Sort by name</button></th>
+          <th><button ng-click="toggleOrder('location')">Sort by location</button></th>
+          <th><button ng-click="toggleOrder('job_openings')">Sort by job openings</button></th>
+          <th>Delete</th>
+        </tr>
+        <tr ng-repeat="startup in startups | filter: {name: nameFilter} | orderBy:orderAttribute:direction">
+         <td>{{startup.name}}</td>
+         <td>{{startup.location}}</td>
+         <td>{{startup.job_openings}}</td>
+         <td><a href="#" ng-click="deleteStartup($index)">Delete</a></td>
+       </tr>
+     </table>
+   </div>
+ </div>
+
+</div>
 </div>

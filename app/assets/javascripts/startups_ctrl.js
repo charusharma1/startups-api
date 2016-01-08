@@ -11,7 +11,21 @@
       
     }
 
-
+    $scope.toggleOrder = function(attribute) {
+      console.log($scope.attribute);
+      if (attribute === $scope.orderAttribute) {
+        console.log("Im running");
+        $scope.direction = !$scope.direction;
+      } else {
+        $scope.direction = false;
+      }
+      $scope.orderAttribute = attribute;
+    }
+    
+    $scope.deleteStartup = function(startup){
+      var index= $scope.startups.indexOf(startup);
+      $scope.startups.splice(index,1);
+    }
 
     $scope.addStartup = function(name,location,job_openings) {
       var newStartup = {
